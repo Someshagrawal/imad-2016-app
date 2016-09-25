@@ -6,5 +6,5 @@ function move(){
   ele.style.marginRight= mRight + 'px';
 }
 ele.onclick = function(){
-var Interval= ele.setInteval(move,10);
+var interval= ele.setInteval(move,10);
 };
