@@ -25,8 +25,8 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/test/newname' , function (req, res) {
-    pool.query("SELECT * FROM test where sno=" + req.params.newname , function(err,result){
+app.get('/articles/articleName', function (req, res) {
+    pool.query("SELECT * FROM test where sno=" + req.params.articleName, function(err,result){
     if(err)
     res.status(500).send(err.toString());
     else{
