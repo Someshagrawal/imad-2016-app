@@ -25,8 +25,22 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/New2',function (req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'New2.html'));
+app.get('/test/newname',function (req, res) {
+    pool.query('SELECT * FROM test'+req.params.newname,function(err,result){
+    if(err)
+    res.status(500).send(err.toString());
+    else{
+        
+         if(res.rows.length===0)
+         res.status(404).send('article not found');
+         else
+         {
+             var articledata = res.rows[0];
+             res.send(createTemplate(articledata));
+         }
+    }
+        
+    });
 });
 
 app.get('/ui/style.css', function (req, res) {
