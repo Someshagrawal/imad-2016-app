@@ -80,7 +80,7 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/articlename', function (req, res) {
+app.get('/:articlename', function (req, res) {
     res.send(createTemplate(articles[articlename]));
     });
 app.get('/:articles/articleName', function (req, res) {
