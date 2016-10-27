@@ -16,6 +16,62 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var articles = {
+    articleone: {
+        id: '1',
+        title: 'article-one',
+        heading: 'Article One',
+        date: 'oct 20, 2016 ',
+        content: '<p>This is my frist article</p>'
+                 } ,
+    articletwo: {
+        id: '2',
+        title: 'article-two',
+        heading: 'Article Two',
+        date: 'oct 21, 2016 ',
+        content: '<p>This is my Second article</p>'
+    } ,
+    articlethree: {
+        id: '3',
+        title: 'article-three',
+        heading: 'Article Three',
+        date: 'oct 22, 2016 ',
+        content: '<p>This is my Third article</p>'
+    }
+};
+
+function createTemplate (data) {
+    var id = data.id;
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    
+    var htmltemp = `
+    <html>
+          <head>
+                <title>
+                       ${title}
+                </title>
+          </head>
+          
+          <body>
+                <a href="/"> Home </a>
+                <h1>
+                    ${heading}
+                </h1>
+                         <br>
+                <h3>
+                    ${date}
+                </h3>
+                         <br>
+                    ${content}
+          </body>
+    </html>      
+     `;
+     return htmltemp;
+}
+
 var pool = new Pool(config);
 app.get('/test-db',function(req, res){
     pool.query('Select * from test',function(err, result){
@@ -25,7 +81,10 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/articles/articleName', function (req, res) {
+app.get('/article-one', function (req, res) {
+    res.send(createTemplate(articleone));
+    });
+app.get('/:articles/articleName', function (req, res) {
     //articleName == Article-one
     pool.query("SELECT * FROM article where title=" + req.params.articleName, function(err,result){
     if(err)
