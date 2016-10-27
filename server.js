@@ -16,21 +16,21 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 var articles = {
-    articleone: {
+    'article-one': {
         id: '1',
         title: 'article-one',
         heading: 'Article One',
         date: 'oct 20, 2016 ',
         content: '<p>This is my frist article</p>'
                  } ,
-    articletwo: {
+    'article-two': {
         id: '2',
         title: 'article-two',
         heading: 'Article Two',
         date: 'oct 21, 2016 ',
         content: '<p>This is my Second article</p>'
     } ,
-    articlethree: {
+    'article-three': {
         id: '3',
         title: 'article-three',
         heading: 'Article Three',
