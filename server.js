@@ -15,15 +15,6 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
-var articleone = {
-        id: '1',
-        title: 'article-one',
-        heading: 'Article One',
-        date: 'oct 20, 2016 ',
-        content: '<p>This is my frist article</p>'
-                 }
-;
 var articles = {
     articleone: {
         id: '1',
@@ -89,8 +80,8 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/article-one', function (req, res) {
-    res.send(createTemplate(articleone));
+app.get('/articlename', function (req, res) {
+    res.send(createTemplate(articles[articlename]));
     });
 app.get('/:articles/articleName', function (req, res) {
     //articleName == Article-one
