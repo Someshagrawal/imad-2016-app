@@ -16,6 +16,14 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+var articleone = {
+        id: '1',
+        title: 'article-one',
+        heading: 'Article One',
+        date: 'oct 20, 2016 ',
+        content: '<p>This is my frist article</p>'
+                 }
+;
 var articles = {
     articleone: {
         id: '1',
