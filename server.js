@@ -15,7 +15,7 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var articles = {
+/*var articles = {
     'article-one': {
         id: '1',
         title: 'article-one',
@@ -37,7 +37,7 @@ var articles = {
         date: 'oct 22, 2016 ',
         content: '<p>This is my Third article</p>'
     }
-};
+};*/
 
 function createTemplate (data) {
     var id = data.id;
