@@ -89,7 +89,8 @@ app.get('/:articlename', function (req, res) {
 
 app.get('/articles/:articleName', function (req, res) {
     //articleName == Article-one
-    pool.query("SELECT * FROM article where title=" + req.params.articleName, function (err, result) {
+    var aname = req.params.articleName;
+    pool.query("SELECT * FROM article where title=" +aname , function (err, result) {
     if(err)
     res.status(500).send(err.toString());
     else{
