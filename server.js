@@ -81,13 +81,13 @@ app.get('/test-db',function(req, res){
         res.send(JSON.stringify(result.rows));
     });
 });
-app.get('/article/:articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
     var aname = req.params.articleName;
-    pool.query("SELECT * FROM article where title ='" +aname+"';" , function (err, result) {
+    pool.query("SELECT * FROM article where title =" +aname , function (err, result) {
     if(err)
     res.status(500).send(err.toString());
     else{
-         if(res.rows.length===0)
+         if(result.rows.length === 0)
          res.status(404).send('Article not found');
          else
          {
