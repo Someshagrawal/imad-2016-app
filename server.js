@@ -86,7 +86,7 @@ app.get('/:articlename', function (req, res) {
     var articlename = req.params.articlename;
     res.send(createTemplate(articles[articlename]));
     });
-app.get('/article/:articlename', function (req, res) {
+app.get('/article/:articleName', function (req, res) {
     var aname = req.params.articleName;
     pool.query("SELECT * FROM article where title ='" +aname+"';" , function (err, result) {
     if(err)
