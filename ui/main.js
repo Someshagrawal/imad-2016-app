@@ -1,5 +1,5 @@
 var counter = 0;
-var button = document.getElementById(''counter');
+var button = document.getElementById('counter');
 document.write("Somesh");
 button.onClick = function() {
     
