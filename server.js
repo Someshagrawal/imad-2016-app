@@ -100,8 +100,8 @@ app.get('/articles/:articleName', function (req, res) {
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
-app.get('/ui/main.js',function (req, res){
- res.sendFile(path.join(_dirname, 'ui','main.js'));   
+app.get('/ui/main.js', function (req, res) {
+ res.sendFile(path.join(__dirname, 'ui','main.js'));   
 });
 app.get('/ui/20150928_220044.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', '20150928_220044.jpg'));
