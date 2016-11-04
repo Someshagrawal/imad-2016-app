@@ -20,10 +20,10 @@
         <script type="text/javascript">
                 var c= 0;
                 var button = document.getElementById('counter');
-                button.onClick = function() {
-                c = c + 1;
                 var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
+                button.onclick = function() {
+                c = c + 1;
+                span.innerHTML = c.toString();
                 };
         </script>
     </body>
