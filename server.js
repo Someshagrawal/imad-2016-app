@@ -41,13 +41,14 @@ app.get('/', function (req, res) {
 
 function createTemplate (data) 
 
-function hash(input,salt){
+function hash (input,salt){
  var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sah512');
  return hashed.toString('hex');
 }
 
-app.get('/hash/:input',function(req, res){
- var hashString = hash(req.params.input,'try-to-hack-pass');
+app.get('/hash/:input', function(req, res){
+ var hashString = req.params.input;
+ //var hashString = hash(req.params.input,'try-to-hack-pass');
  res.send(hashString);
 });
 var pool = new Pool(config);
