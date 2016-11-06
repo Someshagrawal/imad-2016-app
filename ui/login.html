@@ -1,0 +1,92 @@
+<! DOCTYPE html>
+<html>
+     <head>
+           <title>
+                  Login
+           </title>
+           <style>
+                  .heading{
+                           font-family: 'times new roman';
+                           font-size:  40;
+                           font-weight: bold;
+                           color: #000000;
+                           text-decoration: underline;
+                           padding-left: 160px;
+                          }
+                  .inputtext{
+                             font-size: 20;
+                             font-family: 'Baskerville old face'; 
+                            }
+                  .text1{
+                         font-size: 20;
+                         font-family: 'castellar';
+                         font-weight: bold;
+                         padding-left: 350px;
+                        }
+                  .text2{
+                         font-size: 20;
+                         font-family: 'castellar';
+                         font-weight: bold;
+                         padding-left: 300px;
+                        }
+                   .bsub{
+                         font-size: 17;
+                         font-family: 'baskerville old face';
+                         font-weight: bold;
+                         background-color: #EE0022;
+                         color: white;
+                         border: 1px solid black;
+                         cursor: pointer;
+                         padding: 10px 25px;
+                         position:relative;left:340px;
+                        }
+                  .bsubb{
+                         position:relative;left:325px; 
+                        }
+                  .imglogo2{
+                            height:200px;
+                            width:250px; 
+                            padding-left: 700px;
+                            padding-top: 75px;
+                            -webkit-animation: mymove 5s infinite;
+                            animation: mymove 5s infinite;
+                            }
+                 @-webkit-keyframes mymove {
+                                          50% {padding-left: 50px;
+                                           
+                                           }
+                 @keyframes mymove {
+                                    50% {padding-left: 50px;
+                                    }
+           </style>
+     </head>
+     
+
+     <body background="login.jpg" > 
+          <pre class="heading">Login with your registered Email address</pre>
+          <br><br>
+          <form>
+                <span class="text1">Email-</span>&ensp;<input type="text" class="inputtext" value=""/>
+                <br><br><br>  
+          <span class="text2">Password-</span>&ensp;<input type="password" class="inputtext" value=""/>
+          <br><br><br><br>
+          
+          <button type="submit" class="bsub">LOG IN</button>
+          &emsp;&emsp;&emsp;&emsp;
+          <button class="bsub bsubb" onclick="history.go(-1);return true;">HOME</button>
+          </form> 
+          <img class="imglogo2" id="logo2" src="logo2.png"/> 
+             
+          <script>
+          </script>
+
+
+
+
+
+
+
+
+     </body>
+         
+</html>
