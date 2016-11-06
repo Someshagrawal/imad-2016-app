@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-
+var crypto = require('crypto');
 var config = {
     user: 'someshagrawal',
     database: 'someshagrawal',
@@ -39,39 +39,17 @@ app.get('/', function (req, res) {
     }
 };*/
 
-function createTemplate (data) {
-    var id = data.id;
-    var title = data.title;
-    var heading = data.heading;
-    var date = data.date;
-    var content = data.content;
-    
-    var htmltemp = `
-    <html>
-          <head>
-                <title>
-                       ${title}
-                </title>
-          </head>
-          
-          <body>
-                <a href="/"> Home </a>
-                <h1> ${id} </h1>
-                <h1>
-                    ${heading}
-                </h1>
-                         <br>
-                <h3>
-                    ${date.toDateString()}
-                </h3>
-                         <br>
-                    ${content}
-          </body>
-    </html>      
-     `;
-     return htmltemp;
+function createTemplate (data) 
+
+function hash(input,salt){
+ var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sah512');
+ return hashed.toString('hex');
 }
 
+app.get('/hash/:input',function(req, res){
+ var hashString = hash(req.params.input,'try-to-hack-pass');
+ res.send(hashString);
+});
 var pool = new Pool(config);
 app.get('/test-db',function(req, res){
     pool.query('Select * from test',function(err, result){
