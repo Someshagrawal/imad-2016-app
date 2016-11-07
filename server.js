@@ -46,10 +46,10 @@ function hash (input,salt){
  return hashed.toString('hex');
 }
 
-app.get('/ui/hash', function (req, res) {
+app.get('/:input', function (req, res) {
   //var hash = req.params.input;
-  //res.send("hash");
-  document.write("yes it works");
+  res.send("hash");
+  
 });
 
 var pool = new Pool(config);
