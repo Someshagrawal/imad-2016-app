@@ -18,13 +18,13 @@ app.get('/', function (req, res) {
 });
 
 function hash (input, salt) {
- var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sah512');
+ var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
  return hashed.toString('hex');
 }
 
 app.get('/hash/:input', function (req, res) {
   //var hashstr = hash (req.params.input, "try-to-hack-pass");
-  var hashstr=req.params.input;
+  var hashstr = hash(req.params.input, 'try');
   res.send(hashstr);
 });
 
