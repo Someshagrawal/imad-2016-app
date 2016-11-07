@@ -24,7 +24,7 @@ function hash (input, salt) {
 
 app.get('/hash/:input', function (req, res) {
   //var hashstr = hash (req.params.input, "try-to-hack-pass");
-  var hashstr = hash(req.params.input, 'try');
+  var hashstr = hash(req.params.input, 'try-to-hack-pass');
   res.send(hashstr);
 });
 
