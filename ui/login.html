@@ -58,19 +58,67 @@
  </head>
      
  <body background="ui/login.jpg" > 
+ 
    <div class="heading">Login with your registered Email address</div>
    <br><br>
+ 
    <form>
-   <span class="text1">Email-</span>&ensp;<input type="text" class="inputtext" value=""/>
+ 
+   <span class="text1">Email-</span>&ensp;<input type="text" class="inputtext" id='username' value=""/>
    <br><br><br>  
-   <span class="text2">Password-</span>&ensp;<input type="password" class="inputtext" value=""/>
+ 
+   <span class="text2">Password-</span>&ensp;<input type="password" class="inputtext" id='password' value=""/>
    <br><br><br><br>
-   <button type="submit" class="bsub">LOG IN</button>
+ 
+   <button type="submit" class="bsub" id='login_btn'>LOG IN</button>
     &emsp;&emsp;&emsp;&emsp;
+ 
    <button class="bsub bsubb" onclick="window.history.back()">HOME</button>
    </form> 
-    <img class="imglogo2" id="logo2" src="ui/logo2.png"/> 
+   
+    <img class="imglogo2" id="logo2" src="ui/logo2.png"/>
+    
  <script>
+ 
+ var username = document.getElementById('username');
+ var password = document.getElementById('password');
+ var submit = document.getElementById('login_btn');
+ submit.onclick = function () {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+     if (request.readyState === XMLHttpRequest.DONE) {
+        if (request.status === 200) 
+            submit.value = 'Sucess!';
+         else if (request.status === 403)
+            submit.value = 'Invalid credentials. Try again?';
+         else if (request.status === 500) {
+               alert('Something went wrong on the server');
+               submit.value = 'Login';
+              }
+        else {
+            alert('Something went wrong on the server');
+            submit.value = 'Login';
+              }
+           loadLogin();
+          }
+        };
+        
+        // Make the request
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        console.log(username);
+        console.log(password);
+        request.open('POST', '/login', true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({username: username, password: password}));  
+        submit.value = 'Logging in...';
+        
+    };
+    
+    var register = document.getElementById('register_btn');
+    register.onclick = function () {
+ 
  </script>
+ 
      </body>
 </html>
