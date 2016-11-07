@@ -38,15 +38,11 @@ app.get('/', function (req, res) {
         content: '<p>This is my Third article</p>'
     }
 };*/
-
-function createTemplate (data) 
-
 function hash (input,salt){
  var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sah512');
  return hashed.toString('hex');
 }
-
-app.get('/:input', function (req, res) {
+app.get('/hash/:input', function (req, res) {
   //var hash = req.params.input;
   res.send("hash");
   
