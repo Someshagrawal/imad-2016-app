@@ -12,16 +12,18 @@ var config = {
 };
 var app = express();
 app.use(morgan('combined'));
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash(input,salt){
+function hash (input, salt) {
  var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sah512');
  return hashed.toString('hex');
 }
+
 app.get('/hash/:input', function (req, res) {
-  var hashstr = hash(req.params.input, "try-to-hack-pass");
+  var hashstr = hash (req.params.input, "try-to-hack-pass");
   res.send(hashstr);
 });
 
