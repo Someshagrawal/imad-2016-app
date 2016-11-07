@@ -15,35 +15,13 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-/*var articles = {
-    'article-one': {
-        id: '1',
-        title: 'article-one',
-        heading: 'Article One',
-        date: 'oct 20, 2016 ',
-        content: '<p>This is my frist article</p>'
-                 } ,
-    'article-two': {
-        id: '2',
-        title: 'article-two',
-        heading: 'Article Two',
-        date: 'oct 21, 2016 ',
-        content: '<p>This is my Second article</p>'
-    } ,
-    'article-three': {
-        id: '3',
-        title: 'article-three',
-        heading: 'Article Three',
-        date: 'oct 22, 2016 ',
-        content: '<p>This is my Third article</p>'
-    }
-};*/
-function hash (input,salt){
- var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sah512');
+
+function hash(input,salt){
+ var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sah512');
  return hashed.toString('hex');
 }
 app.get('/hash/:input', function (req, res) {
-  var hashstr = hash(req.params.input,"try-to-hack-pass");
+  var hashstr = hash(req.params.input, "try-to-hack-pass");
   res.send(hashstr);
 });
 
