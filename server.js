@@ -43,9 +43,8 @@ function hash (input,salt){
  return hashed.toString('hex');
 }
 app.get('/hash/:input', function (req, res) {
-  //var hash = req.params.input;
-  res.send("hash");
-  
+  var hashstr = hash(req.params.input,"try-to-hack-pass");
+  res.send(hashstr);
 });
 
 var pool = new Pool(config);
