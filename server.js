@@ -48,7 +48,8 @@ function hash (input,salt){
 
 app.get('/hash', function (req, res) {
   //var hash = req.params.input;
-  res.send("hash");
+  //res.send("hash");
+  document.write("yes it works");
 });
 
 var pool = new Pool(config);
