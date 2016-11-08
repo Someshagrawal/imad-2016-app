@@ -79,7 +79,6 @@
     <img class="imglogo2" id="logo2" src="ui/logo2.png"/>
     
  <script>
- var submit = document.getElementById('login_btn');
  /*submit.onclick = function () {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
@@ -110,10 +109,7 @@ request.send(JSON.stringify({username: username, password: password}));
     };*/
 var register = document.getElementById('register_btn');
     register.onclick = function () {
-        // Create a request object
         var request = new XMLHttpRequest();
-        
-        // Capture the response and store it in a variable
         request.onreadystatechange = function () {
           if (request.readyState === XMLHttpRequest.DONE) {
               // Take some action
