@@ -167,11 +167,9 @@ app.get('/blog/:input', function (req, res) {
         res.status(500).send(err.toString());
            } 
        else{
-            var user = result.rows[0].username;
-            var commenter = result.rows[0].commenter;
-     var blogfull = '<h1 align="center">'+ topic +'</h1>';
+     var blogfull = '<!DOCTYPE html><html><head></head><body><h1 align="center">'+ topic +'</h1>';
 blogfull = blogfull + '<br><br><br> <h2>' + result.rows[0].title + '</h2><br><p>' + result.rows[0].article +
-     '</p>' + result.rows[0].comment + '<h4>Your Comment:</h4><input type="text"/>';
+     '</p>' + result.rows[0].comment + '<h4>Your Comment:</h4><input type="text"/></body</html>';
      
     
            }
