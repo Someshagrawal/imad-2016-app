@@ -51,7 +51,7 @@ app.post('/signup', function (req, res) {
    });
 });
 
-app.post('/login', function (req, res) {
+app.get('/login', function (req, res) {
    var username='samy';
    var password='samy';
    //var username = req.body.username;
