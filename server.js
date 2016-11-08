@@ -50,6 +50,34 @@ app.post('/signup', function (req, res) {
    });
 });
 
+app.post('/login', function (req, res) {
+   var username = req.body.username;
+   var password = req.body.password;
+   
+   pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
+      if (err) {
+          res.status(500).send(err.toString());
+      } else {
+          if (result.rows.length === 0) {
+              res.status(403).send('username/password is invalid');
+          } else {
+              var dbString = result.rows[0].password;
+              var salt = dbString.split('$')[2];
+              var hashedPassword = hash(password, salt);
+              if (hashedPassword === dbString) {
+                req.session.auth = {userId: result.rows[0].id};
+    
+                res.send('credentials correct!');
+                
+              } else {
+                res.status(403).send('username/password is invalid');
+              }
+          }
+      }
+   });
+});
+
+
 var pool = new Pool(config);
 
 app.get('/test-db',function(req, res){
@@ -95,13 +123,19 @@ app.get('/ui/logo.png', function (req, res) {
 app.get('/ui/logo3.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'logo3.png'));
 });
-app.get('/ui/ui/logo2.png', function (req, res) {
+app.get('/ui/logo2.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'logo2.png'));
 });
 app.get('/ui/login.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'login.html'));
 });
-app.get('/ui/ui/login.jpg', function (req, res) {
+app.get('/ui/login.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'login.jpg'));
+});
+app.get('/ui/signup.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'login.jpg'));
+});
+app.get('/ui/signup.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'login.jpg'));
 });
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
