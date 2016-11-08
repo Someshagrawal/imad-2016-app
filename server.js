@@ -51,7 +51,7 @@ app.post('/signup', function (req, res) {
    });
 });
 
-app.post('/login', function (req, res) {
+/*app.post('/login', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
@@ -74,9 +74,9 @@ app.post('/login', function (req, res) {
           }
       }
    });
-});
+});*/
 
-app.get('/check-login', function (req, res) {
+/*app.get('/check-login', function (req, res) {
    if(req.session && req.session.auth && req.session.auth.userId) {
        pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
            if (err) {
@@ -89,7 +89,7 @@ app.get('/check-login', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-});
+});*/
 
 
 var pool = new Pool(config);
@@ -155,9 +155,25 @@ app.get('/ui/signup.html', function (req, res) {
 app.get('/ui/blogpot.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'blogpot.jpg'));
 });
+
 app.get('/blog/:input', function (req, res) {
-  var topic = req.params.input;
-  res.send(topic);
+ var topic = req.params.input;
+ if(req.session && req.session.auth && req.session.auth.userI)
+   {
+    pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) 
+     {
+       if (err) {
+        res.status(500).send(err.toString());
+           } 
+       else{
+              var user = result.rows[0].username;
+     var blogfull = '<h1>'+ topic +'</h1> <br>' ;
+    
+           }
+       });
+   } else {
+       res.status(400).send('You are not logged in');
+   }
   
   
   
