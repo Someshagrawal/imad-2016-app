@@ -160,7 +160,7 @@ app.get('/blog/:input', function (req, res) {
  var topic = req.params.input;
  if(true/*req.session && req.session.auth && req.session.auth.userId*/)
    {
-    pool.query('SELECT * FROM $1', topic, function (err, result) 
+    pool.query('SELECT * FROM $1', [req.params.input], function (err, result) 
      {
        if (err) {
         res.status(500).send(err.toString());
