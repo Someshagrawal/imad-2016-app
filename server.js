@@ -158,8 +158,7 @@ app.get('/ui/blogpot.jpg', function (req, res) {
 
 app.get('/blog/:input', function (req, res) {
  var topic = req.params.input;
- document.title = topic;
- if(1==1/*req.session && req.session.auth && req.session.auth.userId*/)
+ if(req.session && req.session.auth && req.session.auth.userId)
    {
     pool.query('SELECT * FROM $1',[topic], function (err, result) 
      {
@@ -169,17 +168,14 @@ app.get('/blog/:input', function (req, res) {
        else{
      var blogfull = '<!DOCTYPE html><html><head></head><body><h1 align="center">'+ topic +'</h1>';
 blogfull = blogfull + '<br><br><br> <h2>' + result.rows[0].title + '</h2><br><p>' + result.rows[0].article +
-     '</p>' + result.rows[0].comment + '<h4>Your Comment:</h4><input type="text"/></body</html>';
+     '</p>' + result.rows[0].comment + '<h4>Your Comment:</h4><input type="text"/></body><script> document.title = "'+ topic +'"</script></html>';
      
     
-           }
+       }
        });
    } else {
        res.status(400).send('You are not logged in');
    }
-  
-  
-  
   
   
 });
