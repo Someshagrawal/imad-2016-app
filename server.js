@@ -158,7 +158,7 @@ app.get('/ui/blogpot.jpg', function (req, res) {
 
 app.get('/blog/:input', function (req, res) {
  var topic = req.params.input;
- if(req.session && req.session.auth && req.session.auth.userId)
+ if(true/*req.session && req.session.auth && req.session.auth.userId*/)
    {
     pool.query('SELECT * FROM $1',[topic], function (err, result) 
      {
