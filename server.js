@@ -52,9 +52,10 @@ app.post('/signup', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-   var username = req.body.username;
-   var password = req.body.password;
-   
+   var username='samy';
+   var password='samy';
+   //var username = req.body.username;
+   //var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
@@ -78,7 +79,7 @@ app.post('/login', function (req, res) {
 });
 
 app.get('/check-login', function (req, res) {
-   if (req.session && req.session.auth && req.session.auth.userId) {
+   if(req.session && req.session.auth && req.session.auth.userId) {
        pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
            if (err) {
               res.status(500).send(err.toString());
