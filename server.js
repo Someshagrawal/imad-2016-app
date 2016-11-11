@@ -52,7 +52,7 @@ app.post('/signup', function (req, res) {
    });
 });
 
-app.post('/login', function (req, res) {
+/*app.post('/login', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
@@ -90,7 +90,7 @@ app.get('/check-login', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-});
+});*/
 
 
 var pool = new Pool(config);
@@ -167,10 +167,12 @@ app.get('/blog/:input', function (req, res) {
         res.status(500).send(err.toString());
            } 
        else{
-     var blogfull = '<!DOCTYPE html><html><head></head><body><h1 align="center">'+ topic +'</h1>';
+     var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +'</title></head><body><h1 align="center">'+ topic +'</h1>';
+     for(i=0;i<result.rows.length;i++){
 blogfull = blogfull + '<br><br><br> <h2>' + result.rows[0].title + '</h2><br><p>' + result.rows[0].article +
-     '</p>' + result.rows[0].comment + '<h4>Your Comment:</h4><input type="text"/></body><script> document.title = "'+ topic +'"</script></html>';
-     
+     '</p><h3>Comments</h3>' + result.rows[0].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[0].sno+'"  type="text"/><button id="B'+ result.rows[0].sno+'">SUBMIT</button>';
+     }
+blogfull =  blogfull+ '</body><script>';     
     
        }
        });
