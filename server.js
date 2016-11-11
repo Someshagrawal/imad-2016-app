@@ -169,7 +169,7 @@ app.get('/blog/:input', function (req, res) {
        else{
      var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +'</title></head><body><h1 align="center">'+ topic +'</h1>';
      for(i=0;i<result.rows.length;i++){
-  blogfull = blogfull + '<br><br><br> <h2>' + result.rows[0].Title + '</h2><br><p>' + result.rows[0].Article +
+  blogfull = blogfull + '<br><br><br> <h2>' + result.rows[0].Title + '</h2><p>' + result.rows[0].Article +
      '</p><h3>Comments</h3>' + result.rows[0].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[0].Sno+'"  type="text"/><button id="B'+ result.rows[0].Sno+'">SUBMIT</button>';
      }
 blogfull =  blogfull+ '</body><script>';  
