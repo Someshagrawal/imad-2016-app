@@ -172,12 +172,12 @@ app.get('/blog/:input', function (req, res) {
      var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +`</title><style> 
      .title{
             color: #FF0000;
-            font-family: "Algerian , serif";
+            font-family: "Algerian";
             font-size: 60px;
            }
      .heading{
               color: #0000FF;
-              font-family: "Bookman Old Style , serif";
+              font-family: "Bookman Old Style";
               font-size: 30px;
              }   
      </style></head><body><u><h1 class="title" align="center">`+ topic +'</h1></u><ol>';
