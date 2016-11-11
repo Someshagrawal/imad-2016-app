@@ -172,12 +172,17 @@ app.get('/blog/:input', function (req, res) {
      var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +`</title><style> 
      .title{
             color: #FF0000;
-            font-family: "Algerian";
-            font-size: 50px;
+            font-family: "Algerian , serif";
+            font-size: 60px;
            }
+     .heading{
+              color: #0000FF;
+              font-family: "Bookman Old Style , serif";
+              font-size: 30px;
+             }   
      </style></head><body><u><h1 class="title" align="center">`+ topic +'</h1></u><ol>';
      for(i=0;i<result.rows.length;i=i+1){
-  blogfull = blogfull + '<br><br><br><h2><li>' + result.rows[i].Title + '</li></h2><p>' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
+  blogfull = blogfull + '<br><br><br><h2><li class="heading">' + result.rows[i].Title + '</li></h2><p>' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
      }
         blogfull =  blogfull + '</ol></body><script>';
         for(i=0;i<result.rows.length;i=i+1){
