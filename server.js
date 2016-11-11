@@ -169,7 +169,13 @@ app.get('/blog/:input', function (req, res) {
         res.status(500).send(err.toString());
            } 
        else{
-     var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +'</title></head><body><h1 align="center">'+ topic +'</h1><ol>';
+     var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +`</title><style> 
+     .title{
+            color: #FF0000;
+            font-family: "Algerian";
+            font-size: 50px;
+           }
+     </style></head><body><u><h1 id="title" align="center">`+ topic +'</h1></u><ol>';
      for(i=0;i<result.rows.length;i=i+1){
   blogfull = blogfull + '<br><br><br><h2><li>' + result.rows[i].Title + '</li></h2><p>' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
      }
@@ -183,8 +189,6 @@ app.get('/blog/:input', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-  
-  
 });
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
