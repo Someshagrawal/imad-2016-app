@@ -173,8 +173,9 @@ app.get('/blog/:input', function (req, res) {
      }
         blogfull =  blogfull + '</ol></body><script>';
         for(i=0;i<result.rows.length;i=i+1){
-        blogfull = blogfull + 'var Con'+result.rows[i].Sno+'= document.getElementById("'+'T'+result.rows[i].Sno+'").value; var bt'+result.rows[i].Sno+'=document.getElementById("B'+result.rows[i].Sno+'")';
+        blogfull = blogfull + 'var Con'+result.rows[i].Sno+'= document.getElementById("'+'T'+result.rows[i].Sno+'").value; var bt'+result.rows[i].Sno+'=document.getElementById("B'+result.rows[i].Sno+'");';
         }
+        
         res.send(blogfull);
     
        }
