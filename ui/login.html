@@ -88,18 +88,17 @@
      if (request.readyState === XMLHttpRequest.DONE) {
         if (request.status === 200) {
             login.value = 'Sucess!';
-            location.href= '/ui/BlogPot.html';}
+            location.href= '/ui/BlogPot.html';
+        }
          else if (request.status === 403)
             login.value = 'Invalid credentials. Try again?';
          else if (request.status === 500) {
                alert('Something went wrong on the server');
                login.value = 'Login';
-               location.href= '/ui/BlogPot.html';
               }
         else {
             alert('Something went wrong on the server');
             login.value = 'Login';
-            location.href= '/ui/BlogPot.html';
               }
           }
         };
