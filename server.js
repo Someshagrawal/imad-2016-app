@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-function hash (input, salt) {
+function hash(input, salt) {
  var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
  return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
 }
@@ -44,14 +44,15 @@ app.post('/signup', function (req, res) {
    pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
-      } else {
+      }
+      else {
         alert('User successfully created: ' + username);
         res.sendFile(path.join(__dirname, 'ui', 'login.html'));
       }
    });
 });
 
-/*app.post('/login', function (req, res) {
+app.post('/login', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
@@ -74,9 +75,9 @@ app.post('/signup', function (req, res) {
           }
       }
    });
-});*/
+});
 
-/*app.get('/check-login', function (req, res) {
+app.get('/check-login', function (req, res) {
    if(req.session && req.session.auth && req.session.auth.userId) {
        pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
            if (err) {
@@ -89,7 +90,7 @@ app.post('/signup', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-});*/
+});
 
 
 var pool = new Pool(config);
