@@ -156,6 +156,9 @@ app.get('/ui/signup.html', function (req, res) {
 app.get('/ui/blogpot.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'blogpot.jpg'));
 });
+app.get('/ui/BlogPot.html', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'BlogPot.html'));
+});
 
 app.get('/blog/:input', function (req, res) {
  var topic = req.params.input;
