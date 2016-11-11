@@ -52,7 +52,7 @@ app.post('/signup', function (req, res) {
    });
 });
 
-/*app.post('/login', function (req, res) {
+app.post('/login', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
@@ -90,7 +90,7 @@ app.get('/check-login', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-});*/
+});
 
 
 var pool = new Pool(config);
@@ -178,9 +178,7 @@ app.get('/blog/:input', function (req, res) {
         for(i=0;i<result.rows.length;i=i+1){
         blogfull = blogfull + 'var Con'+result.rows[i].Sno+'= document.getElementById("'+'T'+result.rows[i].Sno+'").value; var bt'+result.rows[i].Sno+'=document.getElementById("B'+result.rows[i].Sno+'");';
         }
-        
         res.send(blogfull);
-    
        }
        });
    } else {
