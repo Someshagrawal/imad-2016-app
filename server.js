@@ -167,12 +167,11 @@ app.get('/blog/:input', function (req, res) {
         res.status(500).send(err.toString());
            } 
        else{
-     var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +'</title></head><body><h1 align="center">'+ topic +'</h1>';
+     var blogfull = '<!DOCTYPE html><html><head><title>'+ topic +'</title></head><body><h1 align="center">'+ topic +'</h1><ol>';
      for(i=0;i<result.rows.length;i=i+1){
-  blogfull = blogfull + '<br><br><br> <h2>' + result.rows[i].Title + '</h2><p>' + result.rows[i].Article +
-     '</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/><button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
+  blogfull = blogfull + '<br><br><br><h2><li>' + result.rows[i].Title + '</li></h2><p>' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
      }
-        blogfull =  blogfull + '</body><script>';  
+        blogfull =  blogfull + '</ol></body><script>';  
         res.send(blogfull);
     
        }
