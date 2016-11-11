@@ -178,13 +178,17 @@ app.get('/blog/:input', function (req, res) {
      .heading{
               color: #0000FF;
              }  
-       .list{
-             font-family: "Bookman Old Style";
-             font-size: 30px;
-            }         
+     .list{
+            font-family: "Bookman Old Style";
+            font-size: 30px;
+           }
+     .para{
+            font-family: "Bel MT";
+            font-size: 10px;
+          }    
      </style></head><body><u><h1 class="title" align="center">`+ topic +'</h1></u><ol>';
      for(i=0;i<result.rows.length;i=i+1){
-  blogfull = blogfull + '<br><br><br><h2><li class="list"><span class="heading">' + result.rows[i].Title + '</span></li></h2><p>' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
+  blogfull = blogfull + '<br><br><br><h2><li class="list"><span class="heading">' + result.rows[i].Title + '</span></li></h2><p class="para">' + result.rows[i].Article +'</p><h3>Comments</h3>' + result.rows[i].comment + '<h4>Your Comment:</h4><input id="T'+result.rows[i].Sno+'"  type="text"/> &emsp; <button id="B'+ result.rows[i].Sno+'">SUBMIT</button>';
      }
         blogfull =  blogfull + '</ol></body><script>';
         for(i=0;i<result.rows.length;i=i+1){
