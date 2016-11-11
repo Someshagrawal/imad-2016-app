@@ -86,9 +86,9 @@
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
      if (request.readyState === XMLHttpRequest.DONE) {
-        if (request.status === 200) 
+        if (request.status === 200) {
             login.value = 'Sucess!';
-            location.href= '/ui/BlogPot.html';
+            location.href= '/ui/BlogPot.html';}
          else if (request.status === 403)
             login.value = 'Invalid credentials. Try again?';
          else if (request.status === 500) {
