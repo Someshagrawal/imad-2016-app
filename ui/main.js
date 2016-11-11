@@ -30,5 +30,5 @@ function dot(){
      setTimeout(dot2,2000);
      setTimeout(dot3,3000);                       
      }
-     
+  dot();
   var inter = setInterval(dot,4000);
