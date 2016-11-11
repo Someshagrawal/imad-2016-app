@@ -184,7 +184,7 @@ app.get('/blog/:input', function (req, res) {
            }
      .para{
             font-family: "Bel MT";
-            font-size: 20px;
+            font-size: 15px;
           }    
      </style></head><body><u><h1 class="title" align="center">`+ topic +'</h1></u><ol>';
      for(i=0;i<result.rows.length;i=i+1){
