@@ -46,7 +46,7 @@ app.post('/signup', function (req, res) {
           res.status(500).send(err.toString());
       }
       else {
-        alert('User successfully created: ' + username);
+        alert('User successfully created: ' + username+ ".  Now Please Login");
         res.sendFile(path.join(__dirname, 'ui', 'login.html'));
       }
    });
@@ -84,7 +84,6 @@ app.get('/check-login', function (req, res) {
               res.status(500).send(err.toString());
            } else {
               res.send(result.rows[0].username);
-              var user = result.rows[0].username;
            }
        });
    } else {
