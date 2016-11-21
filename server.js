@@ -53,11 +53,10 @@ app.post('/signup', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-  var username="new";
-  var password="new";
-  //var username = req.body.username;
-  //var password = req.body.password;
-   pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
+  var username = req.body.username;
+  var password = req.body.password;
+  res.send(username+password);
+  /* pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
       } else {
@@ -76,7 +75,7 @@ app.post('/login', function (req, res) {
               }
           }
       }
-   });
+   });*/
 });
 
 app.get('/check-login', function (req, res) {
