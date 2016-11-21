@@ -83,7 +83,7 @@
  <script>
     var login = document.getElementById('login_btn');
     login.onclick = function () {
-        login.innerHTML = 'Logging in...';
+    login.value = 'Logging in...';
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
      if (request.readyState === XMLHttpRequest.DONE) {
@@ -102,14 +102,10 @@
         };
 var username = document.getElementById('username').value;
 var password = document.getElementById('password').value;
-console.log(username);
-console.log(password);
-        request.open('POST','http://someshagrawal.imad.hasura-app.io/login', true);
+request.open('POST','http://someshagrawal.imad.hasura-app.io/login', true);
 request.setRequestHeader('Content-Type', 'application/json');
 request.send(JSON.stringify({username: username, password: password}));  
-console.log(JSON.stringify({username: username, password: password}));
     };
-
  </script>
  
      </body>
