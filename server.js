@@ -53,7 +53,7 @@ app.get('/hash/:input', function (req, res) {
 });*/
 
 app.post('/login', function(req, res) {
- res.status(200).send("HELLO");
+ res.sendFile(path.join(__dirname, 'ui', 'logo.png'));
  // var username1 = req.body.username;
  // var password = req.body.password;
    /*pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
