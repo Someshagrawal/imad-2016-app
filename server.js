@@ -36,7 +36,7 @@ app.get('/hash/:input', function (req, res) {
   res.send(hashstr);
 });
 
-app.post('/signup', function (req, res) {
+/*app.post('/signup', function (req, res) {
    var username = req.body.username;
    var password = req.body.password;
    var salt = crypto.randomBytes(128).toString('hex');
@@ -50,12 +50,13 @@ app.post('/signup', function (req, res) {
         res.sendFile(path.join(__dirname, 'ui', 'login.html'));
       }
    });
-});
+});*/
 
 app.post('/login', function(req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-   pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
+    res.send("Hello");
+  //var username1 = req.body.username;
+  //var password = req.body.password;
+   /*pool.query('SELECT * FROM "user" WHERE username = $1', [username], function (err, result) {
       if (err) {
           res.status(500).send(err.toString());
       } else {
@@ -74,10 +75,10 @@ app.post('/login', function(req, res) {
               }
           }
       }
-   });
+   });*/
 });
 
-app.get('/check-login', function (req, res) {
+/*app.get('/check-login', function (req, res) {
    if(req.session && req.session.auth && req.session.auth.userId) {
        pool.query('SELECT * FROM "user" WHERE id=$1', [req.session.auth.userId], function (err, result) {
            if (err) {
@@ -89,7 +90,7 @@ app.get('/check-login', function (req, res) {
    } else {
        res.status(400).send('You are not logged in');
    }
-});
+});*/
 
 
 var pool = new Pool(config);
